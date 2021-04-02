@@ -1,15 +1,20 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'maven:3.3.3'
+    }
+
+  }
   stages {
     stage('Buzz Build') {
       steps {
-        sh './jenkins/build.sh'
+        sh 'mvn clean test-compile'
       }
     }
 
     stage('Buzz Test') {
       steps {
-        sh './jenkins/test-all.sh'
+        sh 'mvn surefire:test'
       }
     }
 
