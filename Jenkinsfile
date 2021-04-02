@@ -4,6 +4,8 @@ pipeline {
     stage('Buzz Buzz') {
       steps {
         echo 'Bees Buzz'
+        sh 'sleep 5'
+        sh 'echo Success!'
       }
     }
 
